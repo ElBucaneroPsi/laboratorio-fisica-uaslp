@@ -956,18 +956,18 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
             <div id="currentDateTime" class="header-datetime">MIÉRCOLES, 21 DE ENERO DE 2026, 09:15:53</div>
         </header>
 
-        <!-- SECCIÓN 1: MENÚ PRINCIPAL -->
+       <!-- SECCIÓN 1: MENÚ PRINCIPAL -->
         <div id="section-landing" class="section active">
             <div class="landing-menu">
-                <div class="menu-card" onclick="showSection(&#39;reservation&#39;)">
-                    <div class="icon">📅</div>
-                    <h2>Reservaciones</h2>
-                    <p>Reserva equipos y horarios del laboratorio</p>
-                </div>
                 <div class="menu-card" onclick="showSection(&#39;alta&#39;)">
                     <div class="icon">📝</div>
                     <h2>Darte de Alta en el Sistema</h2>
                     <p>Registro solo una vez al inicio del semestre</p>
+                </div>
+                <div class="menu-card" onclick="showSection(&#39;reservation&#39;)">
+                    <div class="icon">📅</div>
+                    <h2>Reservaciones</h2>
+                    <p>Reserva equipos y horarios del laboratorio</p>
                 </div>
                 <div class="menu-card" onclick="showSection(&#39;downloads&#39;)">
                     <div class="icon">📥</div>
@@ -986,7 +986,6 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 </div>
             </div>
         </div>
-
         <!-- SECCIÓN 2: RESERVACIONES -->
         <div id="section-reservation" class="section">
             <div class="nav-back">
