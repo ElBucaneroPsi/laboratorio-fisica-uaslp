@@ -956,18 +956,18 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
             <div id="currentDateTime" class="header-datetime">MIÉRCOLES, 21 DE ENERO DE 2026, 09:15:53</div>
         </header>
 
-       <!-- SECCIÓN 1: MENÚ PRINCIPAL -->
+        <!-- SECCIÓN 1: MENÚ PRINCIPAL -->
         <div id="section-landing" class="section active">
             <div class="landing-menu">
-                <div class="menu-card" onclick="showSection(&#39;alta&#39;)">
-                    <div class="icon">📝</div>
-                    <h2>Darte de Alta en el Sistema</h2>
-                    <p>Registro solo una vez al inicio del semestre</p>
-                </div>
                 <div class="menu-card" onclick="showSection(&#39;reservation&#39;)">
                     <div class="icon">📅</div>
                     <h2>Reservaciones</h2>
                     <p>Reserva equipos y horarios del laboratorio</p>
+                </div>
+                <div class="menu-card" onclick="showSection(&#39;alta&#39;)">
+                    <div class="icon">📝</div>
+                    <h2>Darte de Alta en el Sistema</h2>
+                    <p>Registro solo una vez al inicio del semestre</p>
                 </div>
                 <div class="menu-card" onclick="showSection(&#39;downloads&#39;)">
                     <div class="icon">📥</div>
@@ -986,6 +986,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 </div>
             </div>
         </div>
+
         <!-- SECCIÓN 2: RESERVACIONES -->
         <div id="section-reservation" class="section">
             <div class="nav-back">
@@ -1113,13 +1114,13 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <form id="altaForm">
                     <div class="form-group">
                         <label for="altaName">Nombre Completo del Alumno *</label>
-                        <input type="text" id="altaName" placeholder="APELLIDO PATERNO APELLIDO MATERNO - NOMBRE(S)">
+                        <input type="text" id="altaName" placeholder="">
                         <span class="error-message" id="altaNameError"></span>
                         <small style="color: var(--matrix-dim); font-size: 0.75rem; margin-top: 4px; display: block;">FORMATO: APELLIDO PATERNO APELLIDO MATERNO - NOMBRE(S)</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="altaProfessor">Seleccionar Grupo *</label>
+                        <label for="altaProfessor">Seleccionar Profesor *</label>
                         <select id="altaProfessor" onchange="updateAltaInfo()">
                             <option value="">SELECCIONAR PROFESOR</option>
                             
@@ -1207,171 +1208,151 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <table class="rol-table">
                     <thead>
                         <tr>
-                            <th class="week-number">SEMANA</th>
-                            <th class="dates">FECHAS</th>
-                            <th class="activity">ACTIVIDAD</th>
-                            <th class="fis-column fis-header">ESTÁTICA Y DINÁMICA</th>
-                            <th class="fis-column fis-header">ONDAS Y TERMODINÁMICA</th>
-                            <th class="fis-column fis-header">ELECTRICIDAD Y MAGNETISMO</th>
+                            <th class="week-number">Semana</th>
+                            <th class="dates">Fechas</th>
+                            <th class="activity">Actividad / Recordatorio</th>
+                            <th class="fis-header fis-column">FIS 1<br>Estática y Dinámica</th>
+                            <th class="fis-header fis-column">FIS 2<br>Ondas y Termodinámica</th>
+                            <th class="fis-header fis-column">FIS 3<br>Electricidad y Magnetismo</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="rolTableBody">
                         <tr>
                             <td class="week-number">1</td>
-                            <td class="dates">20-24 ENERO</td>
-                            <td class="activity">INTRODUCCIÓN Y SEGURIDAD EN EL LABORATORIO</td>
-                            <td class="fis-column">INTRODUCCIÓN</td>
-                            <td class="fis-column">INTRODUCCIÓN</td>
-                            <td class="fis-column">INTRODUCCIÓN</td>
+                            <td class="dates">19 A 23 ENERO</td>
+                            <td>REGISTRO DE ALUMNOS AL SISTEMA DE LABORATORIO DE FÍSICA</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">—</td>
                         </tr>
                         <tr>
                             <td class="week-number">2</td>
-                            <td class="dates">27-31 ENERO</td>
-                            <td class="activity">PRÁCTICA 1</td>
-                            <td class="fis-column">VECTORES</td>
-                            <td class="fis-column">MEDICIONES</td>
-                            <td class="fis-column">MEDICIONES</td>
+                            <td class="dates">26 A 30 ENERO</td>
+                            <td>RESERVAN PRÁCTICA F1 Y F3</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">—</td>
                         </tr>
                         <tr>
                             <td class="week-number">3</td>
-                            <td class="dates">3-7 FEBRERO</td>
-                            <td class="activity">PRÁCTICA 2</td>
-                            <td class="fis-column">EQUILIBRIO TRASLACIONAL</td>
-                            <td class="fis-column">MOVIMIENTO ONDULATORIO</td>
-                            <td class="fis-column">ELECTRIZACIÓN Y LEY DE COULOMB</td>
+                            <td class="dates">3 A 6 FEBRERO</td>
+                            <td>REALIZAN PRÁCTICA F1 Y F3, RESERVAN PRÁCTICA F2</td>
+                            <td class="fis-column">P1. Mesa de Vectores</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P1. Electroscopio</td>
                         </tr>
                         <tr>
                             <td class="week-number">4</td>
-                            <td class="dates">10-14 FEBRERO</td>
-                            <td class="activity">PRÁCTICA 3</td>
-                            <td class="fis-column">EQUILIBRIO ROTACIONAL</td>
-                            <td class="fis-column">ONDAS ESTACIONARIAS</td>
-                            <td class="fis-column">CAMPO ELÉCTRICO</td>
+                            <td class="dates">9 A 13 FEBRERO</td>
+                            <td>REALIZAN PRÁCTICA F2, RESERVAN PRÁCTICA F1 Y F3</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P1. Densidad de Sólidos y Líquidos</td>
+                            <td class="fis-column">—</td>
                         </tr>
                         <tr>
                             <td class="week-number">5</td>
-                            <td class="dates">17-21 FEBRERO</td>
-                            <td class="activity">PRÁCTICA 4</td>
-                            <td class="fis-column">POLEAS</td>
-                            <td class="fis-column">SONÓMETRO</td>
-                            <td class="fis-column">LÍNEAS DE CAMPO ELÉCTRICO</td>
+                            <td class="dates">16 A 20 FEBRERO</td>
+                            <td>REALIZAN PRÁCTICA F1 Y F3, RESERVAN PRÁCTICA F2</td>
+                            <td class="fis-column">P2. Descomposición de Fuerzas</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P2. Líneas de Campo Eléctrico</td>
                         </tr>
                         <tr>
                             <td class="week-number">6</td>
-                            <td class="dates">24-28 FEBRERO</td>
-                            <td class="activity">PRÁCTICA 5</td>
-                            <td class="fis-column">MÁQUINAS SIMPLES</td>
-                            <td class="fis-column">VELOCIDAD DEL SONIDO</td>
-                            <td class="fis-column">CAPACITANCIA</td>
+                            <td class="dates">23 A 27 FEBRERO</td>
+                            <td>REALIZAN PRÁCTICA F2, RESERVAN PRÁCTICA F1 Y F3</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P2. Tubo de Venturi</td>
+                            <td class="fis-column">—</td>
                         </tr>
                         <tr>
                             <td class="week-number">7</td>
-                            <td class="dates">3-7 MARZO</td>
-                            <td class="activity">PRÁCTICA 6</td>
-                            <td class="fis-column">MRU Y MRUV</td>
-                            <td class="fis-column">CALORÍMETRO</td>
-                            <td class="fis-column">LEY DE OHM</td>
+                            <td class="dates">2 A 6 MARZO</td>
+                            <td>REALIZAN PRÁCTICA F1 Y F3, RESERVAN PRÁCTICA F2</td>
+                            <td class="fis-column">P3. Tiro Parabólico</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P3. Circuito Serie Paralelo</td>
                         </tr>
                         <tr>
                             <td class="week-number">8</td>
-                            <td class="dates">10-14 MARZO</td>
-                            <td class="activity">PRÁCTICA 7</td>
-                            <td class="fis-column">CAÍDA LIBRE</td>
-                            <td class="fis-column">CALOR ESPECÍFICO</td>
-                            <td class="fis-column">CIRCUITOS</td>
+                            <td class="dates">9 A 13 MARZO</td>
+                            <td>REALIZAN PRÁCTICA F2, RESERVAN PRÁCTICA F1 Y F3</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P3. Dilatación Térmica</td>
+                            <td class="fis-column">—</td>
                         </tr>
                         <tr>
                             <td class="week-number">9</td>
-                            <td class="dates">17-21 MARZO</td>
-                            <td class="activity">PRÁCTICA 8</td>
-                            <td class="fis-column">TIRO PARABÓLICO</td>
-                            <td class="fis-column">CAMBIOS DE FASE</td>
-                            <td class="fis-column">POTENCIA ELÉCTRICA</td>
+                            <td class="dates">17 A 20 MARZO</td>
+                            <td>REALIZAN PRÁCTICA F1 Y F3, RESERVAN PRÁCTICA F2</td>
+                            <td class="fis-column">P4. Péndulo Balístico</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P4. Ley de Ohm</td>
                         </tr>
                         <tr>
                             <td class="week-number">10</td>
-                            <td class="dates">24-28 MARZO</td>
-                            <td class="activity">EXAMEN PRÁCTICO</td>
-                            <td class="fis-column">EXAMEN</td>
-                            <td class="fis-column">EXAMEN</td>
-                            <td class="fis-column">EXAMEN</td>
+                            <td class="dates">23 A 27 MARZO</td>
+                            <td>REALIZAN PRÁCTICA F2, RESERVAN PRÁCTICA F1 Y F3</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P4. Calor Específico</td>
+                            <td class="fis-column">—</td>
                         </tr>
                         <tr class="vacation-row">
-                            <td colspan="6">31 MARZO - 4 ABRIL (SEMANA SANTA)</td>
+                            <td colspan="6">PERIODO VACACIONAL (30 MARZO - 10 ABRIL)</td>
                         </tr>
                         <tr>
                             <td class="week-number">11</td>
-                            <td class="dates">7-11 ABRIL</td>
-                            <td class="activity">RECUPERACIÓN Y REPASO</td>
-                            <td class="fis-column">REPASO</td>
-                            <td class="fis-column">REPASO</td>
-                            <td class="fis-column">REPASO</td>
+                            <td class="dates">13 A 17 ABRIL</td>
+                            <td>REALIZAN PRÁCTICA F1 Y F3, RESERVAN PRÁCTICA F2</td>
+                            <td class="fis-column">P5. Poleas</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P5. Inducción Electromagnética</td>
                         </tr>
                         <tr>
                             <td class="week-number">12</td>
-                            <td class="dates">14-18 ABRIL</td>
-                            <td class="activity">PRÁCTICA 9</td>
-                            <td class="fis-column">ROZAMIENTO</td>
-                            <td class="fis-column">GASES IDEALES</td>
-                            <td class="fis-column">MAGNETISMO</td>
+                            <td class="dates">20 A 24 ABRIL</td>
+                            <td>REALIZAN PRÁCTICA F2, RESERVAN PRÁCTICA F1 Y F3</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P5. Óptica</td>
+                            <td class="fis-column">—</td>
                         </tr>
                         <tr>
                             <td class="week-number">13</td>
-                            <td class="dates">21-25 ABRIL</td>
-                            <td class="activity">PRÁCTICA 10</td>
-                            <td class="fis-column">COLISIONES</td>
-                            <td class="fis-column">DILATACIÓN</td>
-                            <td class="fis-column">INDUCCIÓN ELECTROMAGNÉTICA</td>
+                            <td class="dates">27 A 30 ABRIL</td>
+                            <td>REALIZAN PRÁCTICA F1 Y F3, RESERVAN PRÁCTICA F2</td>
+                            <td class="fis-column">P6. Plano Inclinado</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P6. Bobinas H. / Radiómetro</td>
                         </tr>
                         <tr>
                             <td class="week-number">14</td>
-                            <td class="dates">28-2 MAY/ABR</td>
-                            <td class="activity">PRÁCTICA 11</td>
-                            <td class="fis-column">ENERGÍA MECÁNICA</td>
-                            <td class="fis-column">TERMODINÁMICA</td>
-                            <td class="fis-column">ÓPTICA GEOMÉTRICA</td>
+                            <td class="dates">4 A 8 MAYO</td>
+                            <td>REALIZAN PRÁCTICA F2</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">P6. Acústica</td>
+                            <td class="fis-column">—</td>
                         </tr>
                         <tr>
                             <td class="week-number">15</td>
-                            <td class="dates">5-9 MAYO</td>
-                            <td class="activity">PRÁCTICA 12</td>
-                            <td class="fis-column">MOMENTUM LINEAL</td>
-                            <td class="fis-column">MÁQUINA DE CALOR</td>
-                            <td class="fis-column">LENTES</td>
-                        </tr>
-                        <tr>
-                            <td class="week-number">16</td>
-                            <td class="dates">12-16 MAYO</td>
-                            <td class="activity">EXAMEN PRÁCTICO FINAL</td>
-                            <td class="fis-column">EXAMEN FINAL</td>
-                            <td class="fis-column">EXAMEN FINAL</td>
-                            <td class="fis-column">EXAMEN FINAL</td>
+                            <td class="dates">11 A 14 MAYO</td>
+                            <td>ENVÍO DE CALIFICACIONES A PROFESORES</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">—</td>
+                            <td class="fis-column">—</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
             <div class="rol-legend">
-                <h3>INFORMACIÓN IMPORTANTE:</h3>
+                <h3>Información Importante</h3>
                 <ul>
-                    <li><strong>SEMANA 10:</strong> Examen de Prácticas (10% de la calificación total de laboratorio)</li>
-                    <li><strong>SEMANA 16:</strong> Examen Final de Prácticas (15% de la calificación total de laboratorio)</li>
-                    <li><strong>ENTREGA DE REPORTES/BITÁCORA:</strong> Una semana después de cada práctica</li>
-                    <li><strong>POLÍTICA DE ASISTENCIA:</strong> 80% mínimo de asistencia para derecho a examen</li>
-                    <li><strong>NOTA:</strong> Este calendario está sujeto a modificaciones según el avance del grupo</li>
+                    <li><strong>FIS 1:</strong> Materia de Estática y Dinámica</li>
+                    <li><strong>FIS 2:</strong> Materia de Ondas y Termodinámica</li>
+                    <li><strong>FIS 3:</strong> Materia de Electricidad y Magnetismo</li>
+                    <li><strong>Nota:</strong> Algunas prácticas pueden cambiar de acuerdo a la disponibilidad de material y equipo de laboratorio.</li>
+                    <li><strong>Importante:</strong> Las reservas se deben hacer con una semana de anticipación.</li>
                 </ul>
-            </div>
-            
-            <div class="entrega-nota">
-                <div class="entrega-icon">📝</div>
-                <div class="entrega-content">
-                    <h4>ENTREGA DE REPORTE/BITÁCORA</h4>
-                    <p>Recuerda entregar tu reporte/bitácora en la siguiente sesión de laboratorio</p>
-                    <div class="entrega-opciones">
-                        <div class="opcion">📄 IMPRESO</div>
-                        <div class="opcion">📧 CORREO</div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1380,240 +1361,185 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
             <div class="nav-back">
                 <button class="btn-back" onclick="showSection(&#39;landing&#39;)">← VOLVER AL MENÚ</button>
             </div>
-            <h2 style="text-align: center; margin-bottom: 10px;">Características del Reporte/Bitácora</h2>
-            <p style="text-align: center; color: var(--matrix-dim); margin-bottom: 30px;">Estructura y formato para tus reportes de laboratorio</p>
+            <h2 style="text-align: center; margin-bottom: 10px;">Partes de la Bitácora de Laboratorio</h2>
+            <p style="text-align: center; color: var(--matrix-dim); margin-bottom: 20px;">Guía para la elaboración del reporte de prácticas</p>
             
-            <div class="booking-card" style="margin-bottom: 24px;">
-                <h3 style="color: var(--matrix-green); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">PARTES DEL REPORTE DE LABORATORIO</h3>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">1. PORTADA</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Nombre de la práctica</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Nombre del estudiante</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Fecha de realización</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Grupo y profesor</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Número de equipo (en caso de equipos de trabajo)</li>
-                    </ul>
-                </div>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">2. OBJETIVOS</h4>
-                    <p style="color: var(--matrix-green); line-height: 1.6;">Qué se pretende demostrar o investigar con la práctica. Deben ser claros y medibles.</p>
-                </div>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">3. INTRODUCCIÓN TEÓRICA</h4>
-                    <p style="color: var(--matrix-green); line-height: 1.6;">Principios físicos, leyes y conceptos relacionados con la práctica. Incluir fórmulas relevantes con descripción de variables.</p>
-                </div>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">4. MATERIAL Y EQUIPO</h4>
-                    <p style="color: var(--matrix-green); line-height: 1.6;">Lista completa del material y equipo utilizado, incluyendo especificaciones técnicas si aplica.</p>
-                </div>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">5. PROCEDIMIENTO EXPERIMENTAL</h4>
-                    <p style="color: var(--matrix-green); line-height: 1.6;">Descripción paso a paso de cómo se realizó el experimento. Incluir condiciones ambientales si son relevantes.</p>
-                </div>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">6. RESULTADOS Y ANÁLISIS</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Tablas de datos experimentales</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Gráficas pertinentes</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Cálculos realizados (con unidades)</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Análisis de incertidumbre</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Comparación con valores teóricos</li>
-                    </ul>
-                </div>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">7. CUESTIONARIO</h4>
-                    <p style="color: var(--matrix-green); line-height: 1.6;">Respuestas a las preguntas planteadas en la guía de prácticas. Justificar cada respuesta.</p>
-                </div>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">8. CONCLUSIONES</h4>
-                    <p style="color: var(--matrix-green); line-height: 1.6;">Análisis crítico de los resultados obtenidos. Qué se aprendió, qué funcionó, qué no y por qué. Relacionar con los objetivos planteados.</p>
-                </div>
-                
-                <div>
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">9. FUENTES DE CONSULTA</h4>
-                    <p style="color: var(--matrix-green); line-height: 1.6;">Libros, artículos, páginas web utilizadas. Formato APA o ISO 690.</p>
-                </div>
+            <div class="rol-table-container" style="background-color: rgba(13, 13, 13, 0.98); padding: 20px;">
+                <img src="partes_bitacora.jpg" alt="Partes de la Bitácora" style="width: 100%; height: auto; display: block;">
             </div>
             
-            <div class="booking-card">
-                <h3 style="color: var(--matrix-green); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">FORMATO DE LA BITÁCORA</h3>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">CUANDO NO SE ENTREGA REPORTE ESCRITO:</h4>
-                    <p style="color: var(--matrix-green); line-height: 1.6; margin-bottom: 16px;">Se debe entregar una bitácora completa que incluya:</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Datos personales y fecha</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Título de la práctica</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Objetivos (máximo 3)</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Fundamento teórico resumido</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Material utilizado</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Procedimiento (resumido)</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Datos y cálculos (con unidades)</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Gráficas necesarias</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Análisis de resultados</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Conclusiones</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 style="color: var(--matrix-green); margin-bottom: 12px;">CRITERIOS DE EVALUACIÓN:</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Presentación y limpieza</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Claridad en el procedimiento</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Correcto manejo de unidades</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Análisis crítico de resultados</li>
-                        <li style="color: var(--matrix-green); margin-bottom: 8px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0;">•</span> Ortografía y redacción</li>
-                    </ul>
+            <div class="rol-legend">
+                <h3>Información Importante</h3>
+                <ul>
+                    <li><strong>Portada:</strong> Datos del estudiante, materia, grupo, fecha y nombre de la práctica.</li>
+                    <li><strong>Objetivo:</strong> Descripción clara del propósito de la práctica.</li>
+                    <li><strong>Introducción:</strong> Fundamento teórico y conceptos relevantes.</li>
+                    <li><strong>Materiales:</strong> Lista de equipos y materiales utilizados.</li>
+                    <li><strong>Desarrollo:</strong> Procedimiento detallado con mediciones y observaciones.</li>
+                    <li><strong>Cálculos:</strong> Fórmulas y operaciones realizadas.</li>
+                    <li><strong>Gráficas:</strong> Representación visual de los datos obtenidos.</li>
+                    <li><strong>Conclusiones:</strong> Análisis de resultados y aprendizaje obtenido.</li>
+                    <li><strong>Bibliografía:</strong> Referencias de fuentes consultadas.</li>
+                </ul>
+            </div>
+            
+            <div class="entrega-nota">
+                <div class="entrega-icon">📝</div>
+                <div class="entrega-content">
+                    <h4>FORMA DE ENTREGA DEL REPORTE</h4>
+                    <p>EL REPORTE DEBERÁ ENTREGARSE <strong>A MANO</strong>, YA SEA EN:</p>
+                    <div class="entrega-opciones">
+                        <span class="opcion">📄 HOJAS SUELTAS</span>
+                        <span class="opcion">📓 LIBRETA / DIARIO</span>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- MODAL DE ÉXITO -->
-        <div id="successModal" class="modal-overlay">
-            <div class="modal">
-                <div class="modal-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                </div>
-                <h2 id="modalTitle">REGISTRO EXITOSO</h2>
-                <p id="modalMessage">Tu alta ha sido guardada en la hoja de Altas.</p>
-                <div class="confirmation-code">
-                    <div class="label">CÓDIGO DE CONFIRMACIÓN</div>
-                    <div class="code" id="confirmationCode">ALT123XYZ</div>
-                </div>
-                <button class="btn btn-primary" onclick="closeModal()">ACEPTAR</button>
-            </div>
-        </div>
-
-        <!-- TOAST CONTAINER -->
-        <div id="toastContainer" class="toast-container"></div>
-
     </div>
 
+    <!-- MODAL DE ÉXITO -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h2 id="modalTitle">¡RESERVA CONFIRMADA!</h2>
+            <p id="modalMessage">Tu reserva ha sido guardada exitosamente.</p>
+            <div class="confirmation-code">
+                <div class="label">CÓDIGO DE CONFIRMACIÓN</div>
+                <div class="code" id="confirmationCode">---</div>
+            </div>
+            <button class="btn btn-primary" id="modalClose" style="width: 100%;">ACEPTAR</button>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
     <script>
-        // Configuración del Google Apps Script
-        var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzLhF3t2C9n4g5t9y2lK7jM4n5oP6qR7sT8uV9wX0yZ1A2B3C4D5E6F7G8H9I/exec';
+        // URL de tu Google Apps Script
+        var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyiVasr5cdb4LspZo4rPXYkWDESFJG6htvJ8jKWgiwuqLYMcYdQputcn-Y7kytd_tsNiA/exec';
 
         // Variables globales
         var currentStep = 1;
-        var currentMonth = 0; // Enero (0-indexed)
-        var currentYear = 2026;
         var selectedDate = null;
         var selectedTime = null;
-        
-        // Elementos DOM
-        var calendarDays = document.getElementById('calendarDays');
-        var monthYearDisplay = document.getElementById('monthYear');
-        var timeSlotsContainer = document.getElementById('timeSlots');
-        var studentCountInput = document.getElementById('studentCount');
-        var submitBooking = document.getElementById('submitBooking');
-        var submitAlta = document.getElementById('submitAlta');
-        
-        // Inicialización
+        var currentMonth = new Date().getMonth();
+        var currentYear = new Date().getFullYear();
+
+        // Elementos del DOM
+        var calendarDays, monthYearDisplay, prevMonthBtn, nextMonthBtn;
+        var step1Next, step2Back, step2Next, step3Back;
+        var submitBooking, newBooking;
+        var studentCountInput, decreaseCount, increaseCount;
+        var timeSlotsContainer;
+
         function initialize() {
+            // Obtener elementos
+            calendarDays = document.getElementById('calendarDays');
+            monthYearDisplay = document.getElementById('monthYear');
+            prevMonthBtn = document.getElementById('prevMonth');
+            nextMonthBtn = document.getElementById('nextMonth');
+            step1Next = document.getElementById('step1Next');
+            step2Back = document.getElementById('step2Back');
+            step2Next = document.getElementById('step2Next');
+            step3Back = document.getElementById('step3Back');
+            submitBooking = document.getElementById('submitBooking');
+            newBooking = document.getElementById('modalClose');
+            studentCountInput = document.getElementById('studentCount');
+            decreaseCount = document.getElementById('decreaseCount');
+            increaseCount = document.getElementById('increaseCount');
+            timeSlotsContainer = document.getElementById('timeSlots');
+
+            // Event listeners
+            prevMonthBtn.onclick = function() { changeMonth(-1); };
+            nextMonthBtn.onclick = function() { changeMonth(1); };
+            step1Next.onclick = function() { goToStep(2); };
+            step2Back.onclick = function() { goToStep(1); };
+            step2Next.onclick = function() { goToStep(3); };
+            step3Back.onclick = function() { goToStep(2); };
+            decreaseCount.onclick = function() { updateStudentCount(-1); };
+            increaseCount.onclick = function() { updateStudentCount(1); };
+            submitBooking.onclick = submitReservation;
+            newBooking.onclick = closeModal;
+
+            // Event listener para el formulario de altas
+            document.getElementById('submitAlta').onclick = submitAlta;
+
+            // Renderizar calendario
             renderCalendar();
-            renderTimeSlots();
-            updateDateTime();
-            
-            // Event Listeners para navegación de pasos
-            document.getElementById('step1Next').addEventListener('click', function() {
-                goToStep(2);
-            });
-            
-            document.getElementById('step2Back').addEventListener('click', function() {
-                goToStep(1);
-            });
-            
-            document.getElementById('step2Next').addEventListener('click', function() {
-                goToStep(3);
-            });
-            
-            document.getElementById('step3Back').addEventListener('click', function() {
-                goToStep(2);
-            });
-            
-            // Event Listeners para navegación de mes
-            document.getElementById('prevMonth').addEventListener('click', function() {
-                changeMonth(-1);
-            });
-            
-            document.getElementById('nextMonth').addEventListener('click', function() {
-                changeMonth(1);
-            });
-            
-            // Event Listeners para contador de estudiantes
-            document.getElementById('decreaseCount').addEventListener('click', function() {
-                updateStudentCount(-1);
-            });
-            
-            document.getElementById('increaseCount').addEventListener('click', function() {
-                updateStudentCount(1);
-            });
-            
-            // Event Listeners para formulario de reservación
-            submitBooking.addEventListener('click', submitReservation);
-            
-            // Event Listener para formulario de alta
-            submitAlta.addEventListener('click', submitAlta);
         }
 
-        // Función para mostrar secciones
+        // Navegación entre secciones con historial del navegador
+        var currentSection = 'landing';
+
         function showSection(sectionName) {
+            // Evitar navegación si ya estamos en la sección
+            if (currentSection === sectionName) {
+                return;
+            }
+            
+            // Usar pushState para agregar al historial del navegador
+            history.pushState({ section: sectionName }, '', '#' + sectionName);
+            
             // Ocultar todas las secciones
-            var sections = document.querySelectorAll('.section');
-            sections.forEach(function(section) {
+            document.querySelectorAll('.section').forEach(function(section) {
                 section.classList.remove('active');
             });
             
-            // Mostrar la sección deseada
-            var targetSection = document.getElementById('section-' + sectionName);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
+            // Mostrar la sección seleccionada
+            document.getElementById('section-' + sectionName).classList.add('active');
+            currentSection = sectionName;
             
-            // Si es la sección de landing, reiniciar calendario
-            if (sectionName === 'landing') {
-                selectedDate = null;
-                selectedTime = null;
-                renderCalendar();
-                renderTimeSlots();
-                document.getElementById('selectedDateText').textContent = 'NINGUNA';
-                document.getElementById('step1Next').disabled = true;
-            }
-            
-            // Si es la sección de reservation, reiniciar
+            // Reiniciar formulario de reservaciones si es necesario
             if (sectionName === 'reservation') {
-                currentStep = 1;
-                selectedDate = null;
-                selectedTime = null;
-                
-                document.getElementById('step1').style.display = 'block';
-                document.getElementById('step2').style.display = 'none';
-                document.getElementById('step3').style.display = 'none';
-                
-                updateStepIndicators();
-                
-                document.getElementById('selectedDateText').textContent = 'NINGUNA';
-                document.getElementById('step1Next').disabled = true;
-                document.getElementById('step2Next').disabled = true;
-                
-                renderCalendar();
-                renderTimeSlots();
+                resetReservationForm();
             }
         }
 
-        // Grupos de profesores
+        // Manejar el botón de retroceso del navegador
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.section) {
+                var sectionName = event.state.section;
+                
+                // Ocultar todas las secciones
+                document.querySelectorAll('.section').forEach(function(section) {
+                    section.classList.remove('active');
+                });
+                
+                // Mostrar la sección guardada en el estado
+                document.getElementById('section-' + sectionName).classList.add('active');
+                currentSection = sectionName;
+                
+                // Reiniciar formulario de reservaciones si es necesario
+                if (sectionName === 'reservation') {
+                    resetReservationForm();
+                }
+            }
+        });
+
+        function resetReservationForm() {
+            currentStep = 1;
+            selectedDate = null;
+            selectedTime = null;
+            
+            // Resetear interfaz
+            document.querySelectorAll('#section-reservation #step1, #section-reservation #step2, #section-reservation #step3').forEach(function(el) {
+                el.style.display = 'none';
+            });
+            document.getElementById('step1').style.display = 'block';
+            
+            document.getElementById('selectedDateText').textContent = 'NINGUNA';
+            step1Next.disabled = true;
+            step2Next.disabled = true;
+            
+            updateStepIndicators();
+            renderCalendar();
+        }
+
+        // Datos de grupos predefinidos
         var GRUPOS = {
             'Estática y dinámica': [
                 { profesor: 'Alonso Álvarez María Alicia', horario: '17:00-18:00', aula: 'E1-302' },
@@ -1967,7 +1893,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
             // Validar profesor seleccionado
             if (!professor) {
                 document.getElementById('altaProfessor').classList.add('error');
-                document.getElementById('altaProfessorError').textContent = 'SELECCIONA UN GRUPO';
+                document.getElementById('altaProfessorError').textContent = 'SELECCIONA UN PROFESOR';
                 isValid = false;
             } else {
                 document.getElementById('altaProfessor').classList.remove('error');
@@ -1981,7 +1907,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
             var submitBtn = document.getElementById('submitAlta');
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner"></span> REGISTRANDO...';
+            submitBtn.innerHTML = '<span class="spinner"></span> GUARDANDO...';
             
             // Parsear la información del profesor
             var profParts = professor.split(' - ');
@@ -1994,15 +1920,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 nombre: name,
                 profesor: profName,
                 horario: profSchedule,
-                aula: profAula,
-                fechaRegistro: new Date().toLocaleDateString('es-ES', {
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
+                aula: profAula
             };
 
             fetch(GOOGLE_SCRIPT_URL, {
@@ -2020,7 +1938,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 document.getElementById('altaForm').reset();
                 document.getElementById('altaInfo').value = '';
                 showSuccess('REGISTRO EXITOSO', 'Tu alta ha sido guardada en la hoja de Altas.', 'ALT' + Math.random().toString(36).substr(2, 6).toUpperCase());
-            }, 1500);
+            }, 3000);
         }
 
         function showSuccess(title, message, code) {
